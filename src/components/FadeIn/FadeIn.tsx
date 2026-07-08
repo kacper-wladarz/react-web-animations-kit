@@ -1,12 +1,12 @@
 import { ReactNode, useState, useEffect, HTMLAttributes } from "react";
 import clsx from "clsx";
+import { FadeInProps } from "./FadeIn.types";
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
-    children: ReactNode;
-    duration?: number;
-}
-
-const FadeIn = ({ children, duration = 500, ...props }: Props) => {
+const FadeIn = ({
+    children,
+    settings = { duration: 500, delay: 0 },
+    ...props
+}: FadeInProps) => {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
@@ -18,7 +18,8 @@ const FadeIn = ({ children, duration = 500, ...props }: Props) => {
         <div
             {...props}
             style={{
-                transitionDuration: `${duration}ms`,
+                transitionDuration: `${settings.duration}ms`,
+                transitionDelay: `${settings.delay}ms`,
                 ...props.style,
             }}
             className={clsx(
