@@ -1,6 +1,6 @@
 {
     "name": "@kacper-wladarz/react-web-animations-kit",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "Animation kit for React with ready-to-use components",
     "main": "./dist/index.js",
     "module": "./dist/index.mjs",
