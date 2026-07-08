@@ -1,0 +1,42 @@
+{
+    "name": "@kacper-wladarz/react-web-animations-kit",
+    "version": "1.0.0",
+    "description": "Animation kit for React with ready-to-use components",
+    "main": "./dist/index.js",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.mjs",
+            "require": "./dist/index.js"
+        }
+    },
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "tsup"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kacper-wladarz/react-web-animations-kit.git"
+    },
+    "bugs": {
+        "url": "https://github.com/kacper-wladarz/react-web-animations-kit/issues"
+    },
+    "homepage": "https://github.com/kacper-wladarz/react-web-animations-kit#readme",
+    "type": "commonjs",
+    "peerDependencies": {
+        "react": "^19.2.7",
+        "react-dom": "^19.2.7"
+    },
+    "devDependencies": {
+        "@types/react": "^19.2.17",
+        "@types/react-dom": "^19.2.3",
+        "clsx": "^2.1.1",
+        "tsup": "^8.5.1",
+        "typescript": "^5.6.3"
+    }
+}
