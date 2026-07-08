@@ -1,7 +1,9 @@
 import { HTMLAttributes, ReactNode } from "react";
-import { DefaultComponentSettings } from "..";
+import { DefaultComponentSettings } from "../../types";
+
+export interface FadeInSettings extends DefaultComponentSettings { }
 
 export interface FadeInProps extends HTMLAttributes<HTMLDivElement> {
-    settings?: DefaultComponentSettings;
+    settings?: FadeInSettings;
     children: ReactNode;
 }
