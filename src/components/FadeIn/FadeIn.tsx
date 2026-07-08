@@ -18,15 +18,13 @@ const FadeIn = ({
         <div
             {...props}
             style={{
+                transition: "opacity",
                 transitionDuration: `${settings.duration}ms`,
                 transitionDelay: `${settings.delay}ms`,
                 ...props.style,
+                transitionTimingFunction: "ease-in-out",
+                opacity: isVisible ? 1 : 0,
             }}
-            className={clsx(
-                "transition-opacity",
-                isVisible ? "opacity-100" : "opacity-0",
-                props.className,
-            )}
         >
             {children}
         </div>
