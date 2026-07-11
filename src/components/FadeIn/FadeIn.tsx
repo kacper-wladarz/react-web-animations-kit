@@ -1,33 +1,31 @@
-import { ReactNode, useState, useEffect, HTMLAttributes } from "react";
-import clsx from "clsx";
-import { FadeInProps } from "./FadeIn.types";
+import { useEffect, useState, type CSSProperties } from "react";
+import type { FadeInProps } from "./FadeIn.types";
+import useMountAfterRender from "../../hooks/useMountAfterRender";
 
 const FadeIn = ({
     children,
-    settings = { duration: 500, delay: 0 },
+    settings,
     initialOpacity = 0,
     finalOpacity = 1,
     ...props
 }: FadeInProps) => {
     const [isVisible, setIsVisible] = useState(false);
+    const { duration, delay } = { duration: 500, delay: 0, ...settings };
 
-    useEffect(() => {
-        const timer = setTimeout(() => setIsVisible(true), 50);
-        return () => clearTimeout(timer);
-    }, []);
+    useMountAfterRender(() => {
+        setIsVisible(true);
+    });
+
+    const fadeInStyle: CSSProperties = {
+        transitionProperty: "opacity",
+        transitionDuration: `${duration}ms`,
+        transitionDelay: `${delay}ms`,
+        transitionTimingFunction: "ease-in-out",
+        opacity: isVisible ? finalOpacity : initialOpacity,
+    };
 
     return (
-        <div
-            {...props}
-            style={{
-                transition: "opacity",
-                transitionDuration: `${settings.duration}ms`,
-                transitionDelay: `${settings.delay}ms`,
-                ...props.style,
-                transitionTimingFunction: "ease-in-out",
-                opacity: isVisible ? finalOpacity : initialOpacity,
-            }}
-        >
+        <div {...props} style={{ ...props.style, ...fadeInStyle }}>
             {children}
         </div>
     );
