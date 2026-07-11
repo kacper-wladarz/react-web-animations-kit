@@ -5,6 +5,8 @@ import { FadeInProps } from "./FadeIn.types";
 const FadeIn = ({
     children,
     settings = { duration: 500, delay: 0 },
+    initialOpacity = 0,
+    finalOpacity = 1,
     ...props
 }: FadeInProps) => {
     const [isVisible, setIsVisible] = useState(false);
@@ -23,7 +25,7 @@ const FadeIn = ({
                 transitionDelay: `${settings.delay}ms`,
                 ...props.style,
                 transitionTimingFunction: "ease-in-out",
-                opacity: isVisible ? 1 : 0,
+                opacity: isVisible ? finalOpacity : initialOpacity,
             }}
         >
             {children}
